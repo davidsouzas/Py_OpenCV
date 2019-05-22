@@ -31,11 +31,11 @@ def find_blobs(img):
     # Set up the detector with default parameters.
     detector = cv2.SimpleBlobDetector_create(params)
      
-    # Detect blobs.
+    #  blobs Detectados.
     keypoints = detector.detect(img)
       
-    # Draw detected blobs as red circles.
-    # cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS ensures the size of the circle corresponds to the size of blob
+    # Desenhar os keypoints com circulos vermelhos.
+    # cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS desenha exatamente o tamanho do circulo encontrado
     im_with_keypoints = cv2.drawKeypoints(img, keypoints, numpy.array([]),
             (0,0,255), cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS,)
     #cv2.drawContours(img, im_with_keypoints, -1, (0, 255, 0), 2)
@@ -49,7 +49,7 @@ def find_blobs(img):
     cv2.imshow("blobs", im_with_keypoints)     
 #url = "rtsp://71014217:123@10.10.10.205:8554/profile0"
 #cam = cv2.VideoCapture(url, cv2.CAP_FFMPEG)
-cam = cv2.VideoCapture(0)
+cam = cv2.VideoCapture(0) #WebCam
 kernel = numpy.ones((5 ,5), numpy.uint8)
 
 if cam is None or not cam.isOpened():
@@ -75,7 +75,7 @@ else:
 
 
 
-            #Comentarios
+            #Implementações teste
 
                    # _, imagembin = cv2.threshold(cinza, 90, 255, cv2.THRESH_BINARY)
         #imagemdesfoq = cv2.GaussianBlur(imagembin, (5,5), 0)
