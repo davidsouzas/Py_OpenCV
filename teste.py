@@ -58,15 +58,17 @@ else:
     while (True):
         ret, frame = cam.read()
         cinza = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        _, imagembin = cv2.threshold(cinza, 90, 255, cv2.THRESH_BINARY)
+        imagemdesfoq = cv2.GaussianBlur(imagembin, (5,5), 0)
         text = pytesseract.image_to_string(cinza)
         print(text)
         
-        find_blobs(frame)
+        #find_blobs(frame)
     
         #cv2.imshow('camera', frame)
         cv2.imshow('cinza', cinza)
         #cv2.imshow('Binarizada', imagembin)
-        #cv2.imshow('Sem Ruidos + Desfoque', imagemdesfoq)
+        cv2.imshow('Sem Ruidos + Desfoque', imagemdesfoq)
     
         k = cv2.waitKey(1) & 0xFF
     
